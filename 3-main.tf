@@ -44,12 +44,15 @@ resource "azurerm_linux_virtual_machine_scale_set" "phonebook_vmss" {
 
   upgrade_policy_mode = "Automatic"
 
+
   # Define the scaling settings
   capacity {
     minimum = 2
     maximum = 5
     default = 2
   }
+
+  
 
   # Define the autoscaling rules
   automatic_os_upgrade = true
@@ -130,4 +133,23 @@ scale_out_policy {
   ]
 }
 }
+}
+
+# Create an Azure SQL Server and Database
+resource "azurerm_sql_server" "phonebook_db_server" {
+  name                         = "phonebook-db-server"
+  resource_group_name          = "phonebook-resource-group"
+  location                     = "eastus"
+  version                      = "12.0"
+  administrator_login          = "clouduser"
+  administrator_login_password = "Password1234"
+}
+
+resource "azurerm_sql_database" "phonebook_db" {
+  name                = "phonebook-db"
+  resource_group_name = "phonebook-resource-group"
+  server_name         = azurerm_sql_server.phonebook_db_server.name
+  edition             = "Standard"
+  collation           = "SQL_Latin1_General_CP1_CI_AS"
+  max_size_gb         = 1
 }
