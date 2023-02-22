@@ -7,8 +7,9 @@ resource "azurerm_mysql_server" "example" {
   version             = "5.7"
   administrator_login = "clouduser"
   administrator_login_password = "Password1234"
+  
 
-  ssl_enforcement_enabled = true
+  ssl_enforcement_enabled = false
 }
 # resource "azurerm_mysql_database" "example" {
 #   name                = "phonebook"
@@ -24,6 +25,7 @@ resource "azurerm_mysql_database" "example" {
   server_name         = azurerm_mysql_server.example.name
   charset             = "utf8mb4"
   collation           = "utf8mb4_unicode_ci"
+  
 }
 
 resource "azurerm_mysql_firewall_rule" "example" {
