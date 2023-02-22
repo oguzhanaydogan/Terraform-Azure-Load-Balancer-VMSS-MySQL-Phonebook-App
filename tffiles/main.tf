@@ -6,7 +6,7 @@ provider "github" {
   token = file("~/Downloads/key/github-token.txt")
 }
 resource "github_repository_file" "dbendpoint" {
-  content             = azurerm_mysql_server.example.fqdn
+  content             = azurerm_mysql_flexible_server.example.fqdn
   file                = "dbserver.endpoint"
   repository          = "terraform-lb-phonebook-app"
   branch              = "main"
