@@ -20,7 +20,7 @@ app.config['MYSQL_DATABASE_HOST'] = db_endpoint.readline().strip()
 app.config['MYSQL_DATABASE_USER'] = 'clouduser'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'Password1234'
 app.config['MYSQL_DATABASE_DB'] = 'phonebook'
-app.config['MYSQL_DATABASE_PORT'] = 1433
+app.config['MYSQL_DATABASE_PORT'] = 3306 #default port for MySQL
 db_endpoint.close()
 mysql = MySQL()  # We are using this function to initialize mysql
 mysql.init_app(app)
