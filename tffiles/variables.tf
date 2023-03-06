@@ -43,7 +43,7 @@ variable "db_password" {
 
 # VMSS
 variable "ssh_key_rg" {
-  default = "ycetindil"
+  default = "ssh-key-rg"
 }
 
 variable "ssh_key_name" {
